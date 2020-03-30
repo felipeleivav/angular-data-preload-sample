@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ParameterProvider } from './parameters.provider';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'angular-data-preload-sample';
+export class AppComponent implements OnInit {
+
+  parameters: string[];
+
+  constructor(private parameterProvider: ParameterProvider) { }
+
+  ngOnInit() {
+    this.parameters = this.parameterProvider.parameters;
+  }
+
 }
